@@ -29,7 +29,7 @@ List<XmlFile> parseXMLFiles(List<FileSystemEntity> xmlFsEntities) {
 
     final stMatches = RegExp(r'<st>(\d+)</st>').allMatches(content).toList();
     final etMatches = RegExp(r'<et>(\d+)</et>').allMatches(content).toList();
-    final subMatches = RegExp(r'CDATA\[(.*)]]').allMatches(content).toList();
+    final subMatches = RegExp(r'CDATA\[(.*?)]]').allMatches(content).toList();
 
     if (stMatches.length == etMatches.length &&
         etMatches.length == subMatches.length) {
