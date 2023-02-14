@@ -1,0 +1,19 @@
+name: Publish to Pub.dev
+
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: ">> Dart XML to VTT subtitles converter <<"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          accessToken: ${{ secrets.PUB_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.PUB_REFRESH_TOKEN }}
