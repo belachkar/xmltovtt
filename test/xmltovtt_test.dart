@@ -7,21 +7,26 @@ import 'package:test/test.dart';
 void main() {
   final dir = Directory('data');
 
-  test('check directory exists', () async {
+  test('check if data directory exists', () async {
     expect(await checkDirExists(dir), true);
   });
 
-  test('FS Entities', () async {
+  test('Check xml and vtt generated file', () async {
     final fsEntities = await dir.list().toList();
-    var xmlFsEntities = getXMLFiles(fsEntities);
-    final xmlFiles = parseXMLFiles(xmlFsEntities);
-    final vttFiles =
-        xmlFiles.map((xmlFile) => VttFile.fromXmlFile(xmlFile)).toList();
     expect(fsEntities.length, 2);
+
+    final xmlFsEntities = getXMLFiles(fsEntities);
     expect(xmlFsEntities.length, 1);
+
+    final xmlFiles = parseXMLFiles(xmlFsEntities);
     expect(xmlFiles.length, 1);
+
+    final vttFiles = xmlFiles.map((xmlFile) {
+      return VttFile.fromXmlFile(xmlFile);
+    }).toList();
+
     expect(vttFiles.length, 1);
-    expect(vttFiles[0].items.length, 280);
-    expect(vttFiles[0].path.contains('sub_ep10.vtt'), true);
+    expect(vttFiles[0].items.length, 22);
+    expect(vttFiles[0].path.contains('sub_file.vtt'), true);
   });
 }
