@@ -11,9 +11,9 @@ void createVttFiles(List<VttFile> vttFiles) {
 
     final file = File(vttFile.path);
 
-    String contents = 'WEBVTT \n\n';
+    String contents = 'WEBVTT \n';
     for (var item in vttFile.items) {
-      contents += '${item.st} --> ${item.et}\n${item.sub}\n\n';
+      contents += '\n\n${item.st} --> ${item.et}\n${item.sub}';
     }
 
     file.writeAsStringSync(contents);
