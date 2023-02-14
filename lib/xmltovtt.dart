@@ -2,26 +2,9 @@ import 'dart:io';
 
 import 'models/models.dart';
 
-void main(List<String> args) async {
-  Directory dir = Directory.current;
-
-  for (var i = 0; i < args.length; i++) {
-    if (args[i] == '-d' && args.length > i) {
-      dir = Directory(args[i + 1]);
-      _checkDirExists(dir);
-    }
-  }
-
-  final fsEntities = await dir.list().toList();
-  final xmlFsEntities = _getXMLFiles(fsEntities);
-  final xmlFiles = _parseXMLFiles(xmlFsEntities);
-  final vttFiles = xmlFiles.map((xmlFile) => VttFile.fromXmlFile(xmlFile));
-  _createVttFiles(vttFiles);
-}
-
-void _createVttFiles(Iterable<VttFile> vttFiles) {
+void createVttFiles(List<VttFile> vttFiles) {
   for (var vttFile in vttFiles) {
-    if (vttFile.items.length < 1) {
+    if (vttFile.items.isEmpty) {
       print('Skeped "${vttFile.path}": no parsed content.');
       continue;
     }
@@ -37,7 +20,7 @@ void _createVttFiles(Iterable<VttFile> vttFiles) {
   }
 }
 
-List<XmlFile> _parseXMLFiles(Iterable<FileSystemEntity> xmlFsEntities) {
+List<XmlFile> parseXMLFiles(List<FileSystemEntity> xmlFsEntities) {
   final xmlFiles = <XmlFile>[];
 
   for (var xmlFsEntity in xmlFsEntities) {
@@ -75,7 +58,7 @@ List<XmlFile> _parseXMLFiles(Iterable<FileSystemEntity> xmlFsEntities) {
   return xmlFiles;
 }
 
-List<FileSystemEntity> _getXMLFiles(List<FileSystemEntity> fsEntities) {
+List<FileSystemEntity> getXMLFiles(List<FileSystemEntity> fsEntities) {
   final xmlFsEntities =
       fsEntities.where((entity) => entity.path.endsWith('.xml'));
 
@@ -83,9 +66,9 @@ List<FileSystemEntity> _getXMLFiles(List<FileSystemEntity> fsEntities) {
   return xmlFsEntities.toList();
 }
 
-Future<void> _checkDirExists(Directory dir) async {
+Future<bool> checkDirExists(Directory dir) async {
   final exists = await dir.exists();
-  if (exists) return;
+  if (exists) return true;
 
   print('Error: The directory "${dir.path}" DO NOT EXIST.');
   exit(1);
