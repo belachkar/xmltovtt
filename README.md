@@ -1,12 +1,14 @@
 # XML to VTT Converter
 
-A dart console application to convert a specific `xml` subtitle files to `vtt` subtitle files.
+A dart console application to generate `vtt` from a specific `xml` subtitle files.
 
 ## Usage
 
 The example files are located in the `data` folder, used also for testings.
 
-- The command: `xmltovtt -d <path to the folder containing the xml files>`.
+This command will genarate `vtt` files from all `xml` files located in the specified folder, the current folder by default.
+
+- The command: `xmltovtt -d <folder path>`.
 - Ex:
   - `xmltovtt`: Executed in the current folder.
   - `xmltovtt -d data`: Executed in the `data` folder.
