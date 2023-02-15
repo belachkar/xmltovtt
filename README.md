@@ -1,10 +1,10 @@
 # XML to VTT subtitles Converter
 
-![GitHub](https://img.shields.io/github/license/belachkar/xmltovtt?style=flat-square)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/belachkar/xmltovtt?color=222&style=flat-square)
-[![Build](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/dart.yml?label=Build&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/pub_deploy.yml?label=Publish&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
-[![Tag release](https://img.shields.io/github/v/tag/belachkar/xmltovtt?color=2cb7f6&label=Pub&logo=dart&logoColor=2cb7f6&style=flat-square)](https://pub.dartlang.org/packages/xmltovtt)
+[![License](https://img.shields.io/github/license/belachkar/xmltovtt?style=flat-square)](https://github.com/belachkar/xmltovtt/blob/main/LICENSE)
+[![Build](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/dart.yml?label=build&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/pub_deploy.yml?label=publish&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
+[![Release](https://img.shields.io/pub/v/xmltovtt.svg?logo=dart&logoColor=2cb7f6&style=flat-square)](https://pub.dartlang.org/packages/xmltovtt)
+[![GitHub code size](https://img.shields.io/github/languages/code-size/belachkar/xmltovtt?color=222&style=flat-square)](https://github.com/belachkar/xmltovtt)
 
 A dart console application to convert and generate `vtt` files from a specific `xml` subtitle files.
 
@@ -44,10 +44,10 @@ The `xml` files format:
 </xml>
 ```
 
-|                    | xml _ms_ | vtt          | description                                           |
-| ------------------ | -------- | ------------ | ----------------------------------------------------- |
-| **st**: start time | 15330    | 00:00:15.330 | converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
-| **et**: end time   | 15870    | 0:00:15.870  | converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
+| Time               | xml _ms_ |     vtt      | Description                                           |
+| ------------------ | :------: | :----------: | ----------------------------------------------------- |
+| **st**: start time |  15330   | 00:00:15.330 | Converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
+| **et**: end time   |  15870   | 00:00:15.870 | Converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
 
 - **sub**: the subtitle is marked as `<sub><![CDATA[`**The sub title**`]]></sub>`.
 
