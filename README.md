@@ -1,5 +1,7 @@
 # XML to VTT subtitles Converter
 
+<!-- TODO: Update the badges to reflect the status of CI -->
+
 [![License](https://img.shields.io/github/license/belachkar/xmltovtt?style=flat-square)](https://github.com/belachkar/xmltovtt/blob/main/LICENSE)
 [![Build](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/dart.yml?label=build&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/pub_deploy.yml?label=publish&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
@@ -57,9 +59,9 @@ The converted `vtt` files format:
 WEBVTT
 
 
-00:00:15.330 --> 0:00:15.870
+00:00:15.330 --> 00:00:15.870
 Look at Sword Point.
 
-00:00:49.250 --> 0:00:51.250
+00:00:49.250 --> 00:00:51.250
 to protect you.
 ```
