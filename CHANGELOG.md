@@ -1,3 +1,10 @@
+## 1.0.4
+
+- Fix `vtt` time format **h**:mm:ss.xxx -> **hh**:mm:ss.xxx.
+- Update and add some tests.
+- Add classes and functions documentation.
+- Update README content.
+
 ## 1.0.3
 
 - Update tests to cover new cases _xml file without line breaks_.

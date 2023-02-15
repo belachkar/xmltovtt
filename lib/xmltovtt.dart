@@ -2,7 +2,19 @@ import 'dart:io';
 
 import 'models/models.dart';
 
-void createVttFiles(List<VttFile> vttFiles) {
+/// Start all the operations
+Future<void> start(Directory dir) async {
+  final fsEntities = await dir.list().toList();
+
+  final xmlFsEntities = getXMLFiles(fsEntities);
+  final xmlFiles = parseXMLFiles(xmlFsEntities);
+  final vttFiles = xmlFiles.map((xmlFile) => VttFile.fromXmlFile(xmlFile));
+
+  createVttFiles(vttFiles);
+}
+
+/// Create converted `.vtt` files in the same folder as the `.xml` files.
+void createVttFiles(Iterable<VttFile> vttFiles) {
   for (var vttFile in vttFiles) {
     if (vttFile.items.isEmpty) {
       print('Skeped "${vttFile.path}": no parsed content.');
@@ -20,6 +32,7 @@ void createVttFiles(List<VttFile> vttFiles) {
   }
 }
 
+/// Parse xml files and return a list of xmlFile objects.
 List<XmlFile> parseXMLFiles(List<FileSystemEntity> xmlFsEntities) {
   final xmlFiles = <XmlFile>[];
 
@@ -33,7 +46,7 @@ List<XmlFile> parseXMLFiles(List<FileSystemEntity> xmlFsEntities) {
 
     if (stMatches.length == etMatches.length &&
         etMatches.length == subMatches.length) {
-      print('Parsed success - ${subMatches.length} Cues.');
+      print('🗸 ${file.path} \tparsed - ${subMatches.length} Cues.');
 
       final xmlFile = XmlFile([], path: file.path);
       for (var i = 0; i < subMatches.length; i++) {
@@ -45,19 +58,19 @@ List<XmlFile> parseXMLFiles(List<FileSystemEntity> xmlFsEntities) {
       }
       xmlFiles.add(xmlFile);
     } else {
-      print('! Warning: Parsing failed, an error when parsing');
-      print('\tThe number of parsed lines (st, et, sub) do not match');
-      print({
-        'start time': '${stMatches.length} lines.',
-        'end time': '${etMatches.length} lines.',
-        'subtitles': '${subMatches.length} lines.',
-      });
+      print('✗ ${file.path} - parsing failed \tSkiped file');
+      print('  ! The number of parsed lines do not match:');
+      print(
+        '  ! (${stMatches.length}, ${etMatches.length}, ${subMatches.length}}'
+        ' - (start time, End time, subtitles)',
+      );
     }
   }
 
   return xmlFiles;
 }
 
+/// Takes a list of files that return a list of only `.xml`.
 List<FileSystemEntity> getXMLFiles(List<FileSystemEntity> fsEntities) {
   final xmlFsEntities =
       fsEntities.where((entity) => entity.path.endsWith('.xml'));
@@ -66,6 +79,7 @@ List<FileSystemEntity> getXMLFiles(List<FileSystemEntity> fsEntities) {
   return xmlFsEntities.toList();
 }
 
+/// Checks if a directory exists, if not exit with code 1.
 Future<bool> checkDirExists(Directory dir) async {
   final exists = await dir.exists();
   if (exists) return true;

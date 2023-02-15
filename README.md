@@ -1,6 +1,10 @@
-# XML to VTT Converter
+# XML to VTT subtitles Converter
 
-A dart console application to generate `vtt` from a specific `xml` subtitle files.
+[![Dart CI](https://github.com/belachkar/xmltovtt/workflows/Dart%20CI/badge.svg)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
+[![Publishing](https://github.com/belachkar/xmltovtt/workflows/Publishing/badge.svg)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
+[![Publishing](https://img.shields.io/pub/v/xmltovtt.svg)](https://pub.dartlang.org/packages/xmltovtt)
+
+A dart console application to convert and generate `vtt` files from a specific `xml` subtitle files.
 
 ## Usage
 
@@ -22,7 +26,7 @@ The `xml` files format:
   <dia>
     <st>15330</st>
     <et>15870</et>
-    <sub><![CDATA[Look at Sword Point.]]></sub>
+    <sub><![CDATA[The 1st subtitle.]]></sub>
     <style name="style" version="2">
       <position alignment="BottomCenter" horizontal-margin="50%" vertical-margin="86%" />
     </style>
@@ -30,7 +34,7 @@ The `xml` files format:
   <dia>
     <st>49250</st>
     <et>51250</et>
-    <sub><![CDATA[to protect you.]]></sub>
+    <sub><![CDATA[The second subtitle.]]></sub>
     <style name="style" version="2">
       <position alignment="BottomCenter" horizontal-margin="50%" vertical-margin="86%" />
     </style>
@@ -38,19 +42,22 @@ The `xml` files format:
 </xml>
 ```
 
-- **st**: start time, convert to hh:mm:ss.milliseconds.
-- **et**: end time, convert to hh:mm:ss.milliseconds..
-- **sub**: the subtitle marked `<![CDATA[`_the sub title_`]]`.
+|                    | xml _ms_ | vtt          | description                                           |
+| ------------------ | -------- | ------------ | ----------------------------------------------------- |
+| **st**: start time | 15330    | 00:00:15.330 | converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
+| **et**: end time   | 15870    | 0:00:15.870  | converted from ms to hh:mm:ss.xxx (xxx: milliseconds) |
+
+- **sub**: the subtitle is marked as `<sub><![CDATA[`**The sub title**`]]></sub>`.
 
 The converted `vtt` files format:
 
-```vtt
+```c
 WEBVTT
 
 
-0:00:15.330 --> 0:00:15.870
+00:00:15.330 --> 0:00:15.870
 Look at Sword Point.
 
-0:00:49.250 --> 0:00:51.250
+00:00:49.250 --> 0:00:51.250
 to protect you.
 ```

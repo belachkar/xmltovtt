@@ -1,5 +1,8 @@
 import 'models.dart';
 
+/// VTT file class model
+///
+/// [path] the path to the xml file, and [items] the list of vtt cue objects.
 class VttFile {
   final String path;
   final List<VttFileCue> items;
