@@ -1,6 +1,6 @@
 name: xmltovtt
 description: A Dart console app to convert subtitle files from xml to vtt.
-version: 1.0.4
+version: 1.0.5
 repository: https://github.com/belachkar/xmltovtt
 issue_tracker: https://github.com/belachkar/xmltovtt/issues
 

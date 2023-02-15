@@ -1,3 +1,9 @@
+## 1.0.5
+
+- Add an example file.
+- Update README content.
+- Add classes and functions documentation.
+
 ## 1.0.4
 
 - Fix `vtt` time format **h**:mm:ss.xxx -> **hh**:mm:ss.xxx.

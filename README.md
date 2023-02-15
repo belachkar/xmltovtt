@@ -1,8 +1,10 @@
 # XML to VTT subtitles Converter
 
-[![Dart CI](https://github.com/belachkar/xmltovtt/workflows/Dart%20CI/badge.svg)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
-[![Publishing](https://github.com/belachkar/xmltovtt/workflows/Publishing/badge.svg)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
-[![Publishing](https://img.shields.io/pub/v/xmltovtt.svg)](https://pub.dartlang.org/packages/xmltovtt)
+![GitHub](https://img.shields.io/github/license/belachkar/xmltovtt?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/belachkar/xmltovtt?color=222&style=flat-square)
+[![Build](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/dart.yml?label=Build&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/dart.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/belachkar/xmltovtt/pub_deploy.yml?label=Publish&logo=github&style=flat-square)](https://github.com/belachkar/xmltovtt/actions/workflows/pub_deploy.yml)
+[![Tag release](https://img.shields.io/github/v/tag/belachkar/xmltovtt?color=2cb7f6&label=Pub&logo=dart&logoColor=2cb7f6&style=flat-square)](https://pub.dartlang.org/packages/xmltovtt)
 
 A dart console application to convert and generate `vtt` files from a specific `xml` subtitle files.
 
